@@ -27,5 +27,5 @@ class Chass_board():
             return board
 
 
-chass_table = Chass_board()
-print(chass_table.create_board())
+chass_board = Chass_board()
+print(chass_board.create_board())
