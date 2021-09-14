@@ -28,4 +28,4 @@ class Chass_board():
 
 
 chass_table = Chass_board()
-print(chass_table.create_table())
+print(chass_table.create_board())
