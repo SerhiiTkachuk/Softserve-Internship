@@ -1,24 +1,33 @@
+import argparse
+
 '''  Number sequence
 The program displays a series of natural numbers separated by commas, the square of which is less than a given n.
 The program is launched by calling the main class with parameters.  '''
 
 
-class Sequence():
-    def __init__(self, n=0):
-        self.n = input("Enter number: ")
+class Sequence:
+    def __init__(self, n):
+        self.n = n
 
     def seq_count(self):
         sequence = []
-        try:
-            self.n = int(self.n)
-        except ValueError:
-            return "The entered data must be a number!"
-        else:
-            for i in range(self.n):
-                if i**2 < self.n:
-                    sequence.append(i)
-                else:
-                    return sequence
+        for i in range(self.n):
+            if i**2 < self.n:
+                sequence.append(i)
+            else:
+                return sequence
 
-test = Sequence()
-print(test.seq_count())
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("n", type=int, help="Number")
+    args = parser.parse_args()
+    if args.n < 0:
+        print("Number must be positive!")
+    else:
+        test = Sequence(args.n)
+        print(test.seq_count())
+
+
+if __name__ == "__main__":
+    main()
