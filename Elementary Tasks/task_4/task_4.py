@@ -11,10 +11,8 @@ The program should accept arguments as input at startup:
 
 
 class FileParser:
-    def __init__(self, path):  # , string, replacement=""):
+    def __init__(self, path):
         self.path = path
-        # self.string = string
-        # self.replacement = replacement
 
     def find_str(self, find_str):
         counter = 0
