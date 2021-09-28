@@ -1,0 +1,7 @@
+"""File parser
+You need to write a program that will have two modes:
+Count the number OF occurrences OF a line in a text file.
+Replace a string with another in the specified file
+The program should accept arguments as input at startup:
+<path to file> <line to count>
+<file path> <search string> <replacement string>"""
