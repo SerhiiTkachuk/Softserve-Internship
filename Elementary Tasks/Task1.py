@@ -7,25 +7,35 @@ Display a chessboard with the specified dimensions of height and width, accordin
 The program is launched by calling the main class with parameters.'''
 
 
-class Chass_board():
-    def __init__(self, height=0, width=0):
-        self.height = input("Enter height of chess table: ")
-        self.width = input("Enter width of chess table: ")
+import argparse
+
+
+class ChessBoard:
+    def __init__(self, height, width):
+        self.height = height
+        self.width = width
+
     def create_board(self):
         board = ""
-        try:
-            self.height = int(self.height)
-            self.width = int(self.width)
-        except ValueError:
-            return "Height and width must be integers!"
-        else:    
-            for i in range(self.height):
-                if i%2 == 0:
-                    board += "*"*self.width + "\n"
-                else:
-                    board += " " + ("*" * self.width) + "\n"
-            return board
+        for i in range(self.height):
+            if i % 2 == 0:
+                board += "* " * (self.width // 2) + (self.width % 2) * "*" + "\n"
+            else:
+                board += " *" * (self.width // 2) + (self.width % 2) * " " + "\n"
+        return board
 
 
-chass_board = Chass_board()
-print(chass_board.create_board())
+def main():
+    parser = argparse.ArgumentParser(description="Add sizes for a chess board")
+    parser.add_argument("height", type=int, help="Height of board")
+    parser.add_argument("width", type=int, help="Width of board")
+    args = parser.parse_args()
+    if args.height < 0 or args.width < 0:
+        print("Height and width must be a positive number!")
+    else:
+        chess_board = ChessBoard(args.height, args.width)
+        print(chess_board.create_board())
+
+
+if __name__ == "__main__":
+    main()
